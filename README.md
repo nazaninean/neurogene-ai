@@ -1,10 +1,10 @@
 # NeuroGene AI
 
-**Agentic scientific data analysis for neuroimaging and genomics — with automatic literature grounding.**
+**Agentic scientific data analysis for neuroimaging and genomics with automatic literature grounding.**
 
-NeuroGene AI accepts raw scientific data files, automatically detects the format, reasons about what analyses are appropriate, executes real Python code, returns a written scientific interpretation, and grounds findings in published literature from PubMed — all in one step.
+NeuroGene AI accepts raw scientific data files, automatically detects the format, reasons about what analyses are appropriate, executes real Python code, returns a written scientific interpretation, and grounds findings in published literature from PubMed all in one step.
 
-No pipeline configuration. No manual preprocessing. No algorithm selection. The AI figures it out.
+No pipeline configuration. No manual preprocessing.
 
 ---
 
