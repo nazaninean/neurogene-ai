@@ -67,21 +67,50 @@ The backend is a FastAPI server that:
 ## Getting started
 
 ### Requirements
+
 - Python 3.9+
 - Java 11+ (required for H2O AutoML) — download from [adoptium.net](https://adoptium.net)
 - An Anthropic API key — get one at [console.anthropic.com](https://console.anthropic.com)
 
-### Install
+### Option 1: Docker (recommended)
 
-```bash
+No need to install Python, Java, or dependencies manually — everything runs in a container.
+
+docker build -t neurogene-ai .
+docker run -p 8000:8000 --env ANTHROPIC_API_KEY=your_key_here neurogene-ai
+
+Then open `neurogene.html` in your browser. The sidebar will show **Backend: Ready**.
+
+### Option 2: Local install
+
 pip3 install -r requirements.txt
-```
 
-### Run
-
-```bash
 ANTHROPIC_API_KEY=your_key_here python3 agent_backend.py
-```
+
+Then open `neurogene.html` in your browser. The sidebar will show **Backend: Ready**.
+
+Enter your Anthropic API key via the **API Key** button in the top right, drop a file, and click **Analyse with AI**.
+
+### Requirements
+
+- Python 3.9+
+- Java 11+ (required for H2O AutoML) — download from [adoptium.net](https://adoptium.net)
+- An Anthropic API key — get one at [console.anthropic.com](https://console.anthropic.com)
+
+### Option 1: Docker (recommended)
+
+No need to install Python, Java, or dependencies manually — everything runs in a container.
+
+docker build -t neurogene-ai .
+docker run -p 8000:8000 --env ANTHROPIC_API_KEY=your_key_here neurogene-ai
+
+Then open `neurogene.html` in your browser. The sidebar will show **Backend: Ready**.
+
+### Option 2: Local install
+
+pip3 install -r requirements.txt
+
+ANTHROPIC_API_KEY=your_key_here python3 agent_backend.py
 
 Then open `neurogene.html` in your browser. The sidebar will show **Backend: Ready**.
 
@@ -123,6 +152,7 @@ neurogene-repo/
 ├── neurogene.html       # Frontend — open this in Chrome
 ├── agent_backend.py     # Python backend — run this first
 ├── requirements.txt     # Python dependencies
+├── Dockerfile            # Container build for easy deployment
 ├── .gitignore
 └── README.md
 ```
