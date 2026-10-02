@@ -51,7 +51,7 @@ neurogene.html       ← Frontend (chat UI, file upload, sessions)
 agent_backend.py     ← Python backend (file inspection, code execution, Claude API, literature search)
 ```
 
-The frontend is a single HTML file — no build step, no dependencies. Open it in any browser.
+The frontend is a single HTML file. Open it in any browser!
 
 The backend is a FastAPI server that:
 - Inspects uploaded files using scientific Python libraries
