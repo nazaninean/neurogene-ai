@@ -495,6 +495,12 @@ Write in plain scientific prose. No code. No bullet points — paragraphs only. 
         "queries_used": queries
     }
 
+def looks_like_code(text: str) -> bool:
+    """Heuristic: does this text look like Python source rather than prose?"""
+    code_signals = ['import ', 'def ', 'plt.', 'np.', 'ax.', 'fig, ax', 'with open(',
+                     'for p in ', 'while ', '.append(', '= plt.subplots']
+    hits = sum(1 for signal in code_signals if signal in text)
+    return hits >= 4
 
 # ══════════════════════════════════════════════════════════════════════
 #  AGENTIC ANALYSIS — Claude reasons + executes
@@ -581,7 +587,12 @@ Please examine the metadata carefully, then write Python code to explore and ana
         code_blocks = re.findall(r'<code>(.*?)</code>', assistant_text, re.DOTALL)
 
         if not code_blocks:
-            # No more code — this is the final interpretation
+            if looks_like_code(assistant_text):
+                messages.append({
+                    "role": "user",
+                    "content": "That looks like Python code, but it wasn't wrapped in <code></code> tags as instructed. Please either wrap any code in <code></code> tags, or if you're done, write ONLY a plain-prose scientific interpretation with no code at all."
+                })
+                continue
             final_interpretation = assistant_text
             break
 
